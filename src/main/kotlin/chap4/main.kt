@@ -82,10 +82,61 @@ fun main(args: Array<String>) {
     val strs = arrayOf("red", "green", "blue") // 型を明示しなくても大丈夫
     println(strs[0])
 
+    val ints2: IntArray = intArrayOf(1, 2, 3) // int型用の配列はintArray
+    println(ints[0])
+    val chars: CharArray = charArrayOf('a', 'b') // char型用の配列はcharArray
+    println("${chars[0]}, ${chars[1]}")
 
+    /**
+     * リスト
+     */
 
+    val ints3: List<Int> = listOf<Int>(1, 2, 3)
+    println(ints3)
+    println(ints3.size) // 要素数を取得する
+    println(ints3[0]) // 1番目
+//    ints3[0] = 5 // Listに対して値を格納することは出来ない
+//    ints3 += 4 // Listに対しては値の追加も出来ない。 削除もできない(そもそもremoveAt()がない)
+    val ints4: MutableList<Int>  = mutableListOf<Int>(1, 2, 3)
+    ints4[0] = 5 // MutableListであれば、値の変更は可能
+    println(ints4[0]) // 1番目
+    // MutableListであれば、要素の追加、削除も可能
+    ints4 += 5 // 要素の追加
+    println(ints4)
+    ints4.removeAt(2) // 3番目の要素を削除
+    println(ints4)
 
+    /**
+     * セット
+     */
+    val intsSet: Set<Int> = setOf(1, 2, 1, 3)
+    println(intsSet)    // 片方の1は重複しているので除外される
+    val charsSet: MutableSet<Char> = mutableSetOf('a', 'b', 'a')
+    println(charsSet)
+    charsSet -= 'a' // 'a' を削除
+    println(charsSet)
 
+    /**
+     * マップ
+     */
+    val numberMap: MutableMap<String, Int> = mutableMapOf("one" to 1, "two" to 2)
+    println(numberMap)
+    println(numberMap.size) // 要素数を取得
+    println(numberMap["one"]) // 要素を指定
+    println(numberMap["three"]) // 存在しない場合、nullを返す。 エラーにはならない
+    numberMap += "three" to 3 // 要素の追加できる(ミュータブルなら)
+    println(numberMap)
 
-
+    /**
+     * レンジ
+     */
+    println(5 in 1..10) // 1～10に5は存在するか
+    val range: IntRange = 12..15 // rangeというオブジェクトを生成
+    println(5 in range) // 12～15に5は存在するか
+    println(5 !in range) // 12～15に5は存在しないのか(!は否定)
+    println((1..5).toList()) // range をリストに変換
+    println((1..5).reversed().toList()) // 要素を引っくり返した後、リストに変換
+    println((5 downTo 1).toList()) // 上と同じ。 downToで降順になる
+    println((1..5 step 2).toList()) // 1～5まで、2つずつ刻む
+    println((100 downTo 0 step 25).toList()) // 100～0まで25ずつ刻む
 }
