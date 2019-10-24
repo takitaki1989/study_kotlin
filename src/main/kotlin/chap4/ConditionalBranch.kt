@@ -50,6 +50,31 @@ fun main(args: Array<String>) {
     /**
      * when 式
      */
+    var x2 = 5
+    when(x2) {
+        1 -> println("one")
+        2, 3 -> println("two or three")
+        else -> {
+            println("unknown")
+        }
+    }
+    println(x2)
+
+    var x3 = 10
+    when(x3) {
+        1 -> println("one")
+        in 2..10 -> println("1 <= x <= 10") // rangeも指定可能
+        else -> println(x.toString())
+    }
+
+    val x4 = "abc"
+    val blank = when (x4) {
+        is String -> x4.isBlank() // String型かどうか
+        else -> true
+    }
+    println(blank)
+
+
 
 
 
